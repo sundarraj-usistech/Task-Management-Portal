@@ -122,7 +122,7 @@
 						<th>Years of Experience</th>
 						<th>Address</th>
 						<th>Designation</th>
-						<th>Password</th>
+						<!-- <th>Password</th> -->
 
 					</tr>
 
@@ -144,7 +144,7 @@
 						<td><?php echo $key->employee_years_of_experience ?></td>
 						<td><?php echo $key->employee_address; ?></td>
 						<td><?php echo $key->employee_designation; ?></td>
-						<td><?php echo md5($key->employee_password); ?></td>
+						<!-- <td><?php echo md5($key->employee_password); ?></td> -->
 
 					</tr>
 
