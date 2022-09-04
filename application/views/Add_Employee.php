@@ -9,13 +9,13 @@
 
 	<div class="container mt-5 mb-5">
 
-		<div class="card">
+		<div class="card employee">
 			
 			<div class="card-body mt-2">
 			
-				<form method="post" action=" <?php echo base_url(); ?>TaskManagement/addEmployeeDetails " class="form-control">
+				<form method="post" action=" <?php echo base_url(); ?>TaskManagement/addEmployeeDetails ">
 					
-					<table class="table table-borderless d-flex justify-content-center employee">
+					<table class="table table-borderless d-flex justify-content-center">
 						
 						<tr>
 							

@@ -1,4 +1,6 @@
 <?php
+	
+	defined('BASEPATH') OR exit ('No direct script access allowed');
 
 	class TaskManagement extends CI_Controller{
 
@@ -79,7 +81,16 @@
 
 			if ($this->index()) {
 			
-				$this->load->view('Add_Employee');
+				if ($this->session->userdata('user_role') == 1) {
+					
+					$this->load->view('Add_Employee');
+
+				}
+				else{
+
+					$this->load->view('Error_404');
+
+				}
 
 			}
 			else{
@@ -122,8 +133,17 @@
 		public function addProject(){
 
 			if ($this->index()) {
+
+				if ($this->session->userdata('user_role') == 2) {
 				
-				$this->load->view('Add_Project');
+					$this->load->view('Add_Project');
+
+				}
+				else{
+
+					$this->load->view('Error_404');
+
+				}
 
 			}
 			else{
@@ -158,14 +178,22 @@
 
 			if ($this->index()) {
 				
-				$array = array(
+				if ($this->session->userdata('user_role') == 2) {
 
-					'project_name' => $this->TaskManagement_Model->getProjectName(),
-					'employee_name' => $this->TaskManagement_Model->getEmployeeName()
+					$array = array(
 
-				);
+						'project_name' => $this->TaskManagement_Model->getProjectName(),
+						'employee_name' => $this->TaskManagement_Model->getEmployeeName()
 
-				$this->load->view('Add_Task', $array);
+					);
+
+					$this->load->view('Add_Task', $array);
+				}
+				else{
+
+					$this->load->view('Error_404');
+
+				}
 
 			}
 			else{
@@ -233,7 +261,8 @@
 
 				$data = array(
 
-					'task_details' => $this->TaskManagement_Model->searchWithKeyword($keyword)
+					'task_details' => $this->TaskManagement_Model->searchWithKeyword($keyword),
+					'employee_details' => $this->TaskManagement_Model->getEmployeeDetails()
 
 				);
 
@@ -256,7 +285,8 @@
 
 				$data = array(
 
-					'task_details' => $this->TaskManagement_Model->searchWithDueDate($due_date)
+					'task_details' => $this->TaskManagement_Model->searchWithDueDate($due_date),
+					'employee_details' => $this->TaskManagement_Model->getEmployeeDetails()
 
 				);
 

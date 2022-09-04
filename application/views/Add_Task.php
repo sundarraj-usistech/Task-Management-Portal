@@ -9,147 +9,182 @@
 
 	<div class="container mt-5 mb-5">
 
-		<form method="post" action=" <?php echo base_url(); ?>TaskManagement/addTaskDetails " class="form-control">
+		<div class="accordion">
 
-			<div class="card mt-3 mb-3">
+			<div class="accordion-item">
 
-				<div class="card-body">
+				<h3 class="accordion-header" id="panel-taskDetails-header">
+
+					<button type="button" class="accordion-button" data-bs-toggle="collapse" data-bs-target="#panel-taskDetails-body" aria-controls="panel-taskDetails-body" aria-expanded="true">Task Details</button>
+					
+				</h3>
+
+				<div class="accordion-collapse collapse show" id="panel-taskDetails-body" aria-labelledby="panel-taskDetails">
+					
+					<div class="accordion-body">
+						
+						<form method="post" action=" <?php echo base_url(); ?>TaskManagement/addTaskDetails ">
+
+							<div class="card task mt-3 mb-3">
+
+								<div class="card-body">
+								
+									<table class="table table-borderless d-flex justify-content-center">
+
+										<tr>
+											
+											<td><label><b>Project Name</b></label></td>
+											<td>
+
+												<select name="project_name" class="input-field" required>
+
+													<option></option>
+												
+													<?php foreach ($project_name as $key ) { ?>	
+
+															<option value="<?php echo $key->project_name; ?>"><?php echo $key->project_name; ?></option>
+
+													<?php } ?>
+													
+												</select>
+
+											</td>
+
+										</tr>
+										<tr>
+											
+											<td><label><b>Task Name</b></label></td>
+											<td><input type="text" name="task_name" class="input-field" required></td>
+
+										</tr>
+										<tr>
+											
+											<td><label><b>Task Description</b></label></td>
+											<td><textarea name="task_description" class="input-field" rows="5" cols="21" required></textarea></td>
+
+										</tr>
+										<tr>
+											
+											<td><label><b>Task Owner</b></label></td>
+											<td>
+
+												<select name="task_owner" class="input-field" required>
+												
+													<option></option>
+
+													<?php foreach ($employee_name as $key ) { ?>
+														
+														<option value="<?php echo $key->employee_name; ?>"><?php echo $key->employee_name; ?></option>
+
+													<?php } ?>
+																				
+												</select>
+
+											</td>
+
+										</tr>
+										<tr>
+											
+											<td><label><b>Task Due Date</b></label></td>
+											<td><input type="date" name="task_due_date" class="input-field" required></td>
+
+										</tr>
+										<tr>
+											
+											<td><label><b>Task Completed Date</b></label></td>
+											<td><input type="date" name="task_completed_date" class="input-field" required></td>
+
+										</tr>
+
+									</table>
+
+							</div>
+
+						</div>
+
+					</div>
+
+				</div>
 				
-					<table class="table table-borderless d-flex justify-content-center task">
+			</div>
 
-						<tr>
-							
-							<td><label><b>Project Name</b></label></td>
-							<td>
+			<div class="accordion-item">
+				
+				<h3 class="accordion-header" id="panel-followUp-header">
+					
+					<button type="button" class="accordion-button" data-bs-toggle="collapse" data-bs-target="#panel-followUp-body" aria-expanded="true" aria-controls="panel-followUp-body">Task Follow Up Details</button>
 
-								<select name="project_name" class="input-field" required>
+				</h3>
+				<div class="accordion-collapse collapse" id="panel-followUp-body" aria-labelledby="panel-followUp-header">
 
-									<option></option>
-								
-									<?php foreach ($project_name as $key ) { ?>	
+					<div class="accordion-body">
 
-											<option value="<?php echo $key->project_name; ?>"><?php echo $key->project_name; ?></option>
+						<div class="card task mb-3">
 
-									<?php } ?>
-									
-								</select>
+							<div class="card-body">
 
-							</td>
+								<table class="table table-borderless d-flex justify-content-center">
 
-						</tr>
-						<tr>
-							
-							<td><label><b>Task Name</b></label></td>
-							<td><input type="text" name="task_name" class="input-field" required></td>
-
-						</tr>
-						<tr>
-							
-							<td><label><b>Task Description</b></label></td>
-							<td><textarea name="task_description" class="input-field" rows="5" cols="21" required></textarea></td>
-
-						</tr>
-						<tr>
-							
-							<td><label><b>Task Owner</b></label></td>
-							<td>
-
-								<select name="task_owner" class="input-field" required>
-								
-									<option></option>
-
-									<?php foreach ($employee_name as $key ) { ?>
+									<tr>
 										
-										<option value="<?php echo $key->employee_name; ?>"><?php echo $key->employee_name; ?></option>
+										<td><label><b>Follow Up Date</b></label></td>
+										<td><input type="date" name="followup_date" class="input-field" required></td>
 
-									<?php } ?>
-																
-								</select>
-
-							</td>
-
-						</tr>
-						<tr>
-							
-							<td><label><b>Task Due Date</b></label></td>
-							<td><input type="date" name="task_due_date" class="input-field" required></td>
-
-						</tr>
-						<tr>
-							
-							<td><label><b>Task Completed Date</b></label></td>
-							<td><input type="date" name="task_completed_date" class="input-field" required></td>
-
-						</tr>
-
-					</table>
-
-			</div>
-
-		</div>
-		<div class="text-center mb-3">
-			
-			<h5>Follow Up</h5>
-
-		</div>
-		<div class="card mb-3">
-
-			<div class="card-body">
-
-				<table class="table table-borderless d-flex justify-content-center form-control task">
-
-					<tr>
-						
-						<td><label><b>Follow Up Date</b></label></td>
-						<td><input type="date" name="followup_date" class="input-field" required></td>
-
-					</tr>
-					<tr>
-					
-						<td><label><b>Follow Up Comments</b></label></td>
-						<td><textarea name="followup_comments" class="input-field" rows="5" cols="21" required></textarea></td>
-
-					</tr>
-					<tr>
-					
-						<td><label><b>Followed Employee</b></label></td>
-						<td>
-
-							<select name="followed_employee" class="input-field" required>
-							
-								<option></option>
-						
-								<?php foreach ($employee_name as $key ) { ?>
+									</tr>
+									<tr>
 									
-									<option value="<?php echo $key->employee_name; ?>"><?php echo $key->employee_name; ?></option>
+										<td><label><b>Follow Up Comments</b></label></td>
+										<td><textarea name="followup_comments" class="input-field" rows="5" cols="21" required></textarea></td>
 
-								<?php } ?>
+									</tr>
+									<tr>
+									
+										<td><label><b>Followed Employee</b></label></td>
+										<td>
+
+											<select name="followed_employee" class="input-field" required>
+											
+												<option></option>
+										
+												<?php foreach ($employee_name as $key ) { ?>
+													
+													<option value="<?php echo $key->employee_name; ?>"><?php echo $key->employee_name; ?></option>
+
+												<?php } ?>
+											
+											</select>
+
+										</td>
+
+									</tr>
+									<tr>
+										
+										<td><label><b>Color of the Task</b></label></td>
+										<td><input type="color" name="task_colour" required></td>
+
+									</tr>
+
+								</table>
+
+								<div class="text-center">
+									
+									<button type="submit" name="create" class="btn btn-primary">ADD</button>
+
+								</div>	
+
+							</div>
 							
-							</select>
+						</div>
 
-						</td>
+						</form>
 
-					</tr>
-					<tr>
-						
-						<td><label><b>Color of the Task</b></label></td>
-						<td><input type="color" name="task_colour" required></td>
-
-					</tr>
-
-				</table>
-
-				<div class="text-center">
+					</div>
 					
-					<button type="submit" name="create" class="btn btn-primary">ADD</button>
-
-				</div>	
+				</div>
 
 			</div>
 			
 		</div>
-
-		</form>
 
 	</div>
 

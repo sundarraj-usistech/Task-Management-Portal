@@ -11,12 +11,6 @@
 
 }
 
-.login > tbody{
-
-	margin-top: 60px;
-
-}
-
 .dashboard{
 
 	background-color: #f3f3f3;
@@ -49,4 +43,12 @@
 	border-radius: 5px;
 	padding: 5px 10px;
 	
+}
+
+.error{
+
+	background-color: #f3f3f3;
+	font-family: sans-serif;
+	color: #db1111;
+
 }

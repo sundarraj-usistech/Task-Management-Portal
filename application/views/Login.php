@@ -9,13 +9,13 @@
 
 	<div class="container mt-5 mb-5">
 
-		<div class="card">
+		<div class="card login">
 
 			<div class="card-body mt-3">
 				
-				<form method="post" action=" <?php echo base_url(); ?>TaskManagement/login " class="form-control">
+				<form method="post" action=" <?php echo base_url(); ?>TaskManagement/login ">
 					
-					<table class="table table-borderless d-flex justify-content-center login">
+					<table class="table table-borderless d-flex justify-content-center">
 
 						<tbody>
 							
