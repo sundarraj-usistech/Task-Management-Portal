@@ -10,6 +10,7 @@
 			$this->load->database('task_management');
 			$this->load->model('TaskManagement_Model');
 			$this->load->helper('url');
+			$this->load->helper('form');
 			$this->load->library('session');
 
 			$this->load->view('Header');
@@ -18,6 +19,21 @@
 		}
 
 		public function index(){
+
+			if ($this->session->userdata('user_role') && $this->session->userdata('user_name')) {
+				
+				redirect(base_url()."TaskManagement/dashboard");
+
+			}
+			else{
+
+				$this->load->view('Login');
+
+			}
+
+		}
+
+		public function sessionCheck(){
 
 			if ($this->session->userdata('user_role') && $this->session->userdata('user_name')) {
 				
@@ -79,7 +95,7 @@
 
 		public function addEmployee(){
 
-			if ($this->index()) {
+			if ($this->sessionCheck()) {
 			
 				if ($this->session->userdata('user_role') == 1) {
 					
@@ -132,7 +148,7 @@
 
 		public function addProject(){
 
-			if ($this->index()) {
+			if ($this->sessionCheck()) {
 
 				if ($this->session->userdata('user_role') == 2) {
 				
@@ -176,7 +192,7 @@
 
 		public function addTask(){
 
-			if ($this->index()) {
+			if ($this->sessionCheck()) {
 				
 				if ($this->session->userdata('user_role') == 2) {
 
@@ -233,7 +249,7 @@
 
 		public function dashboard(){
 
-			if ($this->index()) {
+			if ($this->sessionCheck()) {
 				
 				$array = array(
 
@@ -255,7 +271,7 @@
 
 		public function searchWithKeyword(){
 
-			if ($this->index()) {
+			if ($this->sessionCheck()) {
 				
 				$keyword = $this->input->post('search_with_keyword'); 
 
@@ -279,7 +295,7 @@
 
 		public function searchWithDueDate(){
 
-			if ($this->index()) {
+			if ($this->sessionCheck()) {
 				
 				$due_date = $this->input->post('search_with_due_date');
 
