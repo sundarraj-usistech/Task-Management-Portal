@@ -137,7 +137,7 @@
 
 					<h2 class="accordion-header" id="panel-headingTwo">
 
-						<button class="accordion-button" type="button" data-bs-toggle="collapse"data-bs-target="#panel-bodyTwo" aria-expanded="true" aria-controls="panel-bodyTwo">Followed Task Details</button>
+						<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"data-bs-target="#panel-bodyTwo" aria-expanded="false" aria-controls="panel-bodyTwo">Followed Task Details</button>
 						
 					</h2>
 
