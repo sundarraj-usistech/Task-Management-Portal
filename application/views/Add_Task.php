@@ -7,7 +7,7 @@
 </head>
 <body>
 
-	<div class="container mt-5 mb-5">
+	<div class="container-fluid mt-5 mb-5">
 
 		<div class="accordion">
 
@@ -112,7 +112,7 @@
 				
 				<h3 class="accordion-header" id="panel-followUp-header">
 					
-					<button type="button" class="accordion-button" data-bs-toggle="collapse" data-bs-target="#panel-followUp-body" aria-expanded="true" aria-controls="panel-followUp-body">Task Follow Up Details</button>
+					<button type="button" class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#panel-followUp-body" aria-expanded="false" aria-controls="panel-followUp-body">Task Follow Up Details</button>
 
 				</h3>
 				<div class="accordion-collapse collapse" id="panel-followUp-body" aria-labelledby="panel-followUp-header">

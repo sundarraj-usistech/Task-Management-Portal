@@ -110,24 +110,29 @@
 			if ($user_role == 1) {
 				
 				$this->db->select('task_name, task_description');
+				$query = $this->db->get('table_tasks');
+				$result = $query->result();
 
 			}
 			else{
 
 				$this->db->select('employee_name');
-				$this->db->where('employee_official_email =', $user_name);
+				$this->db->where('employee_official_email', $user_name);
 				$query = $this->db->get('table_employees');
 				$result = $query->row_array();
 				$employee_name = $result['employee_name'];
 
 				$this->db->select('task_name, task_description');
-				$this->db->where('task_owner =', $employee_name);
-				$this->db->or_where('task_followed_employee =', $employee_name);
+				$this->db->where('task_owner', $employee_name);
+				$query = $this->db->get('table_tasks');
+				$result['assigned_tasks'] = $query->result();
+
+				$this->db->select('task_name, task_description');
+				$this->db->where('task_followed_employee', $employee_name);
+				$query = $this->db->get('table_tasks');
+				$result['followed_tasks'] = $query->result();
 
 			}
-			
-			$query = $this->db->get('table_tasks');
-			$result = $query->result();
 
 			return $result;
 
@@ -143,7 +148,7 @@
 
 		}
 
-		public function searchWithKeyword($keyword){
+		public function searchWithKeyword($keyword, $user_role){
 
 			$this->db->select('task_name, task_description');
 			$this->db->like('task_project_name',$keyword);
@@ -160,12 +165,37 @@
 
 		}
 
-		public function searchWithDueDate($due_date){
+		public function searchWithDueDate($due_date, $user_role, $user_name){
 
-			$this->db->select('task_name, task_description');
-			$this->db->like('task_due_date', $due_date);
-			$query = $this->db->get('table_tasks');
-			$result = $query->result();
+			if ($user_role == 1) {
+
+				$this->db->select('task_name, task_description');
+				$this->db->like('task_due_date', $due_date);
+				$query = $this->db->get('table_tasks');
+				$result = $query->result();
+			}
+			else{
+
+				$this->db->select('employee_name');
+				$this->db->where('employee_official_email =', $user_name);
+				$query = $this->db->get('table_employees');
+				$result = $query->row_array();
+				$employee_name = $result['employee_name'];
+
+				$this->db->select('task_name, task_description');
+				$this->db->where('task_owner', $employee_name);
+				$this->db->like('task_due_date', $due_date);
+				$query = $this->db->get('table_tasks');
+				$result['assigned_tasks'] = $query->result();
+
+				$this->db->select('task_name, task_description');
+				$this->db->where('task_followed_employee', $employee_name);
+				$this->db->like('task_due_date', $due_date);
+				$query = $this->db->get('table_tasks');
+				$result['followed_tasks'] = $query->result();
+
+
+			}
 
 			return $result;
 

@@ -276,7 +276,7 @@
 
 				$data = array(
 
-					'task_details' => $this->TaskManagement_Model->searchWithKeyword($keyword),
+					'task_details' => $this->TaskManagement_Model->searchWithKeyword($keyword, $this->session->userdata('user_role')),
 					'employee_details' => $this->TaskManagement_Model->getEmployeeDetails()
 
 				);
@@ -300,7 +300,7 @@
 
 				$data = array(
 
-					'task_details' => $this->TaskManagement_Model->searchWithDueDate($due_date),
+					'task_details' => $this->TaskManagement_Model->searchWithDueDate($due_date, $this->session->userdata('user_role'), $this->session->userdata('user_name')),
 					'employee_details' => $this->TaskManagement_Model->getEmployeeDetails()
 
 				);
