@@ -10,7 +10,6 @@
 			$this->load->database('task_management');
 			$this->load->model('TaskManagement_Model');
 			$this->load->helper('url');
-			$this->load->helper('form');
 			$this->load->library('session');
 
 			$this->load->view('Header');
